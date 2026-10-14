@@ -1,4 +1,4 @@
-# Estimation & Bootstrapping — Quantifying Uncertainty Without a Formula
+# Abigail Ray || Estimation & Bootstrapping — Quantifying Uncertainty Without a Formula
 
 ## Objective
 
