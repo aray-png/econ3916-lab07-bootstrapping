@@ -40,4 +40,39 @@ The manual bootstrap produced a standard error of $424 and a 95% percentile inte
 SciPy produced the following intervals:
 
 - **Percentile interval:** [$12,173, $13,796]
-- **BCa interval:** [$
+- **BCa interval:** [$12,180, $13,809]
+
+The manual and SciPy percentile intervals differed because they used different bootstrap resamples. When I supplied `seed=42` to my revised AI function, its interval matched SciPy's percentile interval. This showed the importance of reproducibility when checking statistical code.
+
+### Difference in Weekly Working Hours
+
+Men reported an average of 42.43 hours per week, while women reported an average of 36.41 hours. The observed difference was 6.02 hours, with a 95% BCa confidence interval of [5.73, 6.28] hours.
+
+The interval excluded zero, indicating an association in this dataset. However, this does not establish causation, and the 1994 data may not represent today's workforce.
+
+### Confidence-Interval Coverage
+
+In a simulation using lognormal data, the nominal 95% intervals achieved the following coverage rates:
+
+| Target | Method | Coverage |
+|---|---|---:|
+| Mean | Parametric | 92.5% |
+| Mean | Percentile bootstrap | 91.5% |
+| Median | Parametric | 66.8% |
+| Median | Percentile bootstrap | 93.2% |
+
+For the mean, the 1.0-percentage-point difference between methods was within the Monte Carlo standard error of approximately 1.3 percentage points. The methods performed similarly in this simulation.
+
+For the median, the mean-centred parametric interval performed poorly, covering only 66.8% of experiments. The bootstrap interval covered 93.2%, much closer to the nominal 95% level.
+
+### Inequality Measure
+
+The 90th-to-10th percentile ratio of positive capital gains was 6.45, with a 95% BCa confidence interval of [6.24, 8.37].
+
+The interval was wide and asymmetric, illustrating the uncertainty involved in estimating a statistic influenced by extreme values. This result should be interpreted cautiously because extreme quantiles can be sensitive to the observations in the tails.
+
+## Reflection
+
+This lab helped me understand the difference between variation in individual observations and uncertainty in an estimate. I learned how to construct and interpret confidence intervals, use bootstrap resampling for statistics without a simple standard-error formula, and recognize when the bootstrap has limitations.
+
+I also learned that different bootstrap runs can produce slightly different intervals because they use different random samples. Setting a seed makes results reproducible, while checking AI-generated code against known results helps determine whether the implementation is working correctly. Overall, the lab showed me why understanding the statistical method is just as important as writing the code.
